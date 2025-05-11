@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formas de Pagamento | Nome da Loja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Estilos específicos para a página de pagamentos */
+        .banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .payment-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        
+        .payment-section {
+            margin-bottom: 3rem;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .payment-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #e91e63;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .payment-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #e91e63;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .method-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e91e63;
+        }
+        
+        .method-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .method-card p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .installments-info {
+            background-color: #2a2a2a;
+            border-left: 4px solid #e91e63;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .security-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+        
+        .security-badge {
+            flex-shrink: 0;
+            width: 80px;
+        }
+        
+        .security-text {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .security-text strong {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .payment-methods {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .security-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .payment-section {
+                padding: 1.5rem;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Formas de Pagamento</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="payment-container">
+        <!-- Cartões de Crédito -->
+        <div class="payment-section">
+            <h2>Cartões de Crédito</h2>
+            <p>Aceitamos todas as bandeiras principais. Parcele suas compras em até 12x sem juros*.</p>
+            
+            <div class="payment-methods">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-cc-visa"></i>
+                    </div>
+                    <h3>Visa</h3>
+                    <p>Até 12x sem juros*</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <h3>Mastercard</h3>
+                    <p>Até 12x sem juros*</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                    <h3>American Express</h3>
+                    <p>Até 10x sem juros*</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-cc-diners-club"></i>
+                    </div>
+                    <h3>Diners Club</h3>
+                    <p>Até 6x sem juros*</p>
+                </div>
+            </div>
+            
+            <div class="installments-info">
+                <p>* Parcelamento sem juros válido para compras acima de R$ 200,00. Para valores menores ou parcelamentos maiores, podem ser cobrados juros conforme política do emissor do cartão.</p>
+            </div>
+        </div>
+
+        <!-- Outras Formas de Pagamento -->
+        <div class="payment-section">
+            <h2>Outras Formas de Pagamento</h2>
+            <p>Oferecemos diversas opções para facilitar sua compra.</p>
+            
+            <div class="payment-methods">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                    <h3>Boleto Bancário</h3>
+                    <p>Pagamento à vista com 5% de desconto</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>PIX</h3>
+                    <p>Pagamento instantâneo com 5% de desconto</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <h3>PayPal</h3>
+                    <p>Pagamento em até 6x no cartão</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Transferência</h3>
+                    <p>Pagamento à vista com 3% de desconto</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segurança -->
+        <div class="payment-section">
+            <h2>Segurança nas Transações</h2>
+            <p>Todas as suas transações são protegidas com os mais altos padrões de segurança.</p>
+            
+            <div class="security-info">
+                <img src="https://via.placeholder.com/80x80" alt="Selos de Segurança" class="security-badge">
+                <div class="security-text">
+                    <p><strong>Compra 100% segura:</strong> Utilizamos criptografia SSL de 256 bits para proteger todos os seus dados durante a transação. Nossa loja é certificada pelas principais instituições de segurança de pagamentos online.</p>
+                    <p>Trabalhamos com os maiores gateways de pagamento do mercado para garantir a segurança das suas informações financeiras.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dúvidas Frequentes -->
+        <div class="payment-section">
+            <h2>Dúvidas Frequentes</h2>
+            
+            <div class="faq-item">
+                <h3>Posso parcelar no boleto bancário?</h3>
+                <p>Não, o boleto bancário é sempre à vista. Oferecemos 5% de desconto para pagamentos via boleto.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Como funciona o desconto no PIX?</h3>
+                <p>O desconto de 5% no PIX é aplicado automaticamente no checkout, antes da confirmação do pagamento.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Qual o prazo para confirmação de pagamento?</h3>
+                <p>Cartões de crédito e PIX são confirmados em até 1 hora. Boletos bancários podem levar até 2 dias úteis.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="#">Calçados</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="pagamento.html">Formas de Pagamento</a></li>
+                    <li><a href="#">Formas de Entrega</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

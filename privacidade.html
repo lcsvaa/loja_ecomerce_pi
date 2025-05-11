@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Nome da Loja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Estilos específicos para a página de política de privacidade */
+        .banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .privacy-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 20px;
+            color: #ddd;
+            line-height: 1.8;
+        }
+        
+        .privacy-section {
+            margin-bottom: 3rem;
+        }
+        
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            color: #e91e63;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .privacy-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #e91e63;
+        }
+        
+        .privacy-section h3 {
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            color: white;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .privacy-section ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight {
+            background-color: rgba(233, 30, 99, 0.1);
+            border-left: 3px solid #e91e63;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .update-date {
+            text-align: right;
+            font-style: italic;
+            color: #999;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .privacy-container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Política de Privacidade</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="privacy-container">
+        <div class="privacy-section">
+            <h2>Introdução</h2>
+            <p>A Nome da Loja ("nós", "nosso", "nossa") valoriza a privacidade de seus clientes e usuários. Esta Política de Privacidade explica como coletamos, usamos, compartilhamos e protegemos suas informações pessoais quando você visita nosso site ou faz compras conosco.</p>
+            
+            <div class="highlight">
+                <p>Ao utilizar nosso site, você concorda com a coleta e uso de informações de acordo com esta política. Se não concordar com estes termos, por favor, não acesse ou use nosso site.</p>
+            </div>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Informações que Coletamos</h2>
+            <p>Podemos coletar os seguintes tipos de informações quando você interage conosco:</p>
+            
+            <h3>Informações que você nos fornece</h3>
+            <ul>
+                <li>Dados de cadastro (nome, e-mail, telefone, endereço)</li>
+                <li>Informações de pagamento (não armazenamos dados completos de cartão de crédito)</li>
+                <li>Histórico de compras e preferências</li>
+                <li>Comunicações com nosso atendimento</li>
+            </ul>
+            
+            <h3>Informações coletadas automaticamente</h3>
+            <ul>
+                <li>Dados de navegação (endereço IP, tipo de dispositivo, páginas visitadas)</li>
+                <li>Cookies e tecnologias similares</li>
+                <li>Dados de interação com nossos e-mails e anúncios</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Como Usamos Suas Informações</h2>
+            <p>Utilizamos as informações coletadas para os seguintes propósitos:</p>
+            
+            <ul>
+                <li>Processar seus pedidos e entregar produtos</li>
+                <li>Melhorar nossos produtos e serviços</li>
+                <li>Personalizar sua experiência de compra</li>
+                <li>Enviar comunicações sobre promoções e novidades (se você permitir)</li>
+                <li>Prevenir fraudes e melhorar a segurança</li>
+                <li>Cumprir obrigações legais</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Compartilhamento de Informações</h2>
+            <p>Não vendemos suas informações pessoais. Podemos compartilhar dados com:</p>
+            
+            <ul>
+                <li>Parceiros de pagamento para processar transações</li>
+                <li>Empresas de transporte para entrega de produtos</li>
+                <li>Prestadores de serviços que nos auxiliam nas operações</li>
+                <li>Autoridades quando exigido por lei</li>
+            </ul>
+            
+            <div class="highlight">
+                <p>Todos os parceiros que recebem seus dados são obrigados a manter a mesma proteção e sigilo que nós oferecemos.</p>
+            </div>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Cookies e Tecnologias Similares</h2>
+            <p>Utilizamos cookies para:</p>
+            
+            <ul>
+                <li>Lembrar itens no carrinho de compras</li>
+                <li>Analisar tráfego e padrões de navegação</li>
+                <li>Personalizar conteúdo e anúncios</li>
+            </ul>
+            
+            <p>Você pode controlar o uso de cookies nas configurações do seu navegador, mas isso pode afetar algumas funcionalidades do site.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Seus Direitos</h2>
+            <p>De acordo com a legislação de proteção de dados, você tem direito a:</p>
+            
+            <ul>
+                <li>Acessar as informações que temos sobre você</li>
+                <li>Corrigir dados incorretos ou incompletos</li>
+                <li>Solicitar a exclusão de seus dados pessoais</li>
+                <li>Opor-se ao processamento de seus dados</li>
+                <li>Revogar consentimentos dados anteriormente</li>
+            </ul>
+            
+            <p>Para exercer esses direitos, entre em contato através do e-mail: privacidade@nomedaloja.com</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Segurança dos Dados</h2>
+            <p>Implementamos medidas técnicas e organizacionais para proteger suas informações, incluindo:</p>
+            
+            <ul>
+                <li>Criptografia de dados sensíveis</li>
+                <li>Sistemas de proteção contra acessos não autorizados</li>
+                <li>Treinamento de nossa equipe em proteção de dados</li>
+                <li>Atualizações regulares de nossos sistemas de segurança</li>
+            </ul>
+            
+            <p>Nenhum método de transmissão ou armazenamento eletrônico é 100% seguro, mas nos comprometemos a manter os mais altos padrões de proteção.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Alterações nesta Política</h2>
+            <p>Podemos atualizar esta Política de Privacidade periodicamente. A versão mais recente estará sempre disponível em nosso site com a data de atualização.</p>
+            
+            <p>Alterações significativas serão comunicadas por e-mail ou através de aviso em nosso site.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2>Contato</h2>
+            <p>Se tiver dúvidas sobre esta Política de Privacidade ou sobre como tratamos seus dados pessoais, entre em contato conosco:</p>
+            
+            <ul>
+                <li>E-mail: privacidade@nomedaloja.com</li>
+                <li>Endereço: Rua Exemplo, 123 - Centro, Cidade/Estado - CEP 00000-000</li>
+                <li>Telefone: (00) 0000-0000</li>
+            </ul>
+        </div>
+
+        <div class="update-date">
+            <p>Última atualização: 01 de Janeiro de 2023</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="pagamento.html">Formas de Pagamento</a></li>
+                    <li><a href="entrega.html">Formas de Entrega</a></li>
+                    <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

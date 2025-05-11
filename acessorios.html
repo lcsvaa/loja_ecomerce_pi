@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessórios | Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Estilos específicos para a página de acessórios */
+        .banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: #e91e63;
+        }
+        
+        .produto-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .produto-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .produto-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .produto-card:hover img {
+            transform: scale(1.03);
+        }
+        
+        .produto-info {
+            padding: 1.2rem;
+        }
+        
+        .produto-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .produto-tipo {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .preco {
+            color: #e91e63;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .btn-comprar {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #e91e63;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-comprar:hover {
+            background-color: #c2185b;
+        }
+        
+        .tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e91e63;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .produto-lista {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .produto-lista {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html" class="active">Acessórios</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Acessórios</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+        <!-- FILTROS POR CATEGORIA -->
+        <div class="category-filters">
+            <button class="category-btn active" data-category="todos">Todos</button>
+            <button class="category-btn" data-category="chaveiros">Chaveiros</button>
+            <button class="category-btn" data-category="pins">Pins</button>
+            <button class="category-btn" data-category="adesivos">Adesivos</button>
+            <button class="category-btn" data-category="patches">Patches</button>
+        </div>
+
+        <!-- LISTA DE PRODUTOS -->
+        <div class="produto-lista">
+            <!-- Chaveiro 1 -->
+            <div class="produto-card" data-category="chaveiros">
+                <span class="tag">Novo</span>
+                <img src="img/acessorios/chaveiro1.jpg" alt="Chaveiro Logo Metálico">
+                <div class="produto-info">
+                    <span class="produto-tipo">Chaveiro</span>
+                    <h3>Logo Metálico</h3>
+                    <span class="preco">R$ 29,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Pin 1 -->
+            <div class="produto-card" data-category="pins">
+                <img src="img/acessorios/pin1.jpg" alt="Pin Especial Edição Limitada">
+                <div class="produto-info">
+                    <span class="produto-tipo">Pin</span>
+                    <h3>Edição Limitada</h3>
+                    <span class="preco">R$ 24,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Adesivo 1 -->
+            <div class="produto-card" data-category="adesivos">
+                <span class="tag">Promoção</span>
+                <img src="img/acessorios/adesivo1.jpg" alt="Pacote de Adesivos Variados">
+                <div class="produto-info">
+                    <span class="produto-tipo">Adesivos</span>
+                    <h3>Pacote Variado</h3>
+                    <span class="preco">R$ 19,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Patch 1 -->
+            <div class="produto-card" data-category="patches">
+                <img src="img/acessorios/patch1.jpg" alt="Patch Bordado Clássico">
+                <div class="produto-info">
+                    <span class="produto-tipo">Patch</span>
+                    <h3>Bordado Clássico</h3>
+                    <span class="preco">R$ 34,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Chaveiro 2 -->
+            <div class="produto-card" data-category="chaveiros">
+                <img src="img/acessorios/chaveiro2.jpg" alt="Chaveiro de Borracha">
+                <div class="produto-info">
+                    <span class="produto-tipo">Chaveiro</span>
+                    <h3>Modelo Borracha</h3>
+                    <span class="preco">R$ 22,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Pin 2 -->
+            <div class="produto-card" data-category="pins">
+                <span class="tag">Novo</span>
+                <img src="img/acessorios/pin2.jpg" alt="Pin de Skate">
+                <div class="produto-info">
+                    <span class="produto-tipo">Pin</span>
+                    <h3>Skate Vintage</h3>
+                    <span class="preco">R$ 27,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Adesivo 2 -->
+            <div class="produto-card" data-category="adesivos">
+                <img src="img/acessorios/adesivo2.jpg" alt="Adesivo Grande">
+                <div class="produto-info">
+                    <span class="produto-tipo">Adesivo</span>
+                    <h3>Grande Logo</h3>
+                    <span class="preco">R$ 14,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <!-- Patch 2 -->
+            <div class="produto-card" data-category="patches">
+                <span class="tag">Últimas Unidades</span>
+                <img src="img/acessorios/patch2.jpg" alt="Patch Especial">
+                <div class="produto-info">
+                    <span class="produto-tipo">Patch</span>
+                    <h3>Edição Especial</h3>
+                    <span class="preco">R$ 39,90</span>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="#">Formas de Pagamento</a></li>
+                    <li><a href="#">Formas de Entrega</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+
+        // Filtro de categorias
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.produto-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                // Filter products
+                productCards.forEach(card => {
+                    if (category === 'todos' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

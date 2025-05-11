@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novidades | Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Additional styles for novidades page */
+        .banner {
+            background: linear-gradient(135deg, var(--primary-color), #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+        }
+        
+        .blog-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover img {
+            transform: scale(1.03);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-date {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .blog-excerpt {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: #e91e63;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: #c2185b;
+        }
+        
+        .newsletter-section {
+            background-color: #1a1a1a;
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 4rem auto;
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .newsletter-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .newsletter-desc {
+            color: #ccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .newsletter-input {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            min-width: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .newsletter-input:focus {
+            outline: 2px solid #e91e63;
+        }
+        
+        .newsletter-btn {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .newsletter-input {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .newsletter-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html" class="active">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Novidades</h1>
+    </div>
+
+    <!-- BLOG SECTION -->
+    <div class="container">
+        <div class="blog-container">
+            <!-- Post 1 -->
+            <div class="blog-card">
+                <img src="https://i.pinimg.com/736x/8e/cf/2d/8ecf2d139e5a08d19ea8a4767b23c165.jpg" alt="Nova Coleção Outono/Inverno">
+                <div class="blog-content">
+                    <div class="blog-date">15 MARÇO 2023</div>
+                    <h3 class="blog-title">Conheça nossa nova coleção Outono/Inverno</h3>
+                    <p class="blog-excerpt">Descubra as peças exclusivas que preparamos para a estação mais fria do ano, com materiais premium e designs inovadores.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="blog-card">
+                <img src="https://i.pinimg.com/736x/74/e9/7c/74e97c55ce3a690b335c220f28f751b9.jpg" alt="Colaboração com Artista Local">
+                <div class="blog-content">
+                    <div class="blog-date">28 FEVEREIRO 2023</div>
+                    <h3 class="blog-title">Colaboração exclusiva com artista urbano</h3>
+                    <p class="blog-excerpt">Nossa parceria com o renomado artista @streetartguy resulta em peças únicas com estampas limitadas.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="blog-card">
+                <img src="img/loja.png" alt="Evento de Lançamento">
+                <div class="blog-content">
+                    <div class="blog-date">10 FEVEREIRO 2023</div>
+                    <h3 class="blog-title">Evento VIP de lançamento na galeria urbana</h3>
+                    <p class="blog-excerpt">Confira como foi o nosso evento exclusivo para clientes selecionados, com desfile e drinks especiais.</p>
+                    <a href="#" class="read-more">Ler mais →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEWSLETTER SECTION -->
+        <div class="newsletter-section">
+            <h2 class="newsletter-title">Assine nossa newsletter</h2>
+            <p class="newsletter-desc">Receba em primeira mão informações sobre novos lançamentos, coleções exclusivas e eventos especiais.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="newsletter-btn">Assinar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="#">Formas de Pagamento</a></li>
+                    <li><a href="#">Formas de Entrega</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

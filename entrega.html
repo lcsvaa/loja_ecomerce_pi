@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formas de Entrega | Nome da Loja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Estilos específicos para a página de entregas */
+        .banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .delivery-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        
+        .delivery-section {
+            margin-bottom: 3rem;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .delivery-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #e91e63;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .delivery-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #e91e63;
+        }
+        
+        .delivery-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .method-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e91e63;
+        }
+        
+        .method-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .method-card p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .method-card .price {
+            color: #e91e63;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 1.5rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e91e63;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #e91e63;
+            border: 3px solid #1a1a1a;
+        }
+        
+        .timeline-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .faq-item p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .delivery-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .delivery-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Formas de Entrega</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="delivery-container">
+        <!-- Opções de Entrega -->
+        <div class="delivery-section">
+            <h2>Nossas Opções de Entrega</h2>
+            <p>Oferecemos diversas formas de entrega para que você receba seus produtos com segurança e no menor prazo possível.</p>
+            
+            <div class="delivery-methods">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Entrega Expressa</h3>
+                    <p>Entrega em até 2 dias úteis para capitais e regiões metropolitanas.</p>
+                    <p class="price">R$ 25,90</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Entrega Padrão</h3>
+                    <p>Entrega em até 5 dias úteis para todo o Brasil.</p>
+                    <p class="price">R$ 15,90</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Retirada na Loja</h3>
+                    <p>Retire seu pedido em nossa loja física sem custo adicional.</p>
+                    <p class="price">Grátis</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Frete Grátis</h3>
+                    <p>Para compras acima de R$ 200 em todo o Brasil.</p>
+                    <p class="price">Grátis</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Processo de Entrega -->
+        <div class="delivery-section">
+            <h2>Como Funciona Nosso Processo de Entrega</h2>
+            <p>Entenda todas as etapas desde a confirmação do seu pedido até a entrega em sua casa.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Pedido Confirmado</h4>
+                    <p>Após a confirmação do pagamento, seu pedido é separado em nosso estoque.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Embalagem</h4>
+                    <p>Seus itens são cuidadosamente embalados para garantir que cheguem em perfeito estado.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Envio</h4>
+                    <p>O pedido é despachado para nossa transportadora e você recebe o código de rastreio.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Entrega</h4>
+                    <p>Seu pedido é entregue no endereço cadastrado dentro do prazo estimado.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acompanhamento -->
+        <div class="delivery-section">
+            <h2>Acompanhe Seu Pedido</h2>
+            <p>Todos os pedidos são enviados com código de rastreio. Você receberá atualizações por e-mail e poderá acompanhar:</p>
+            
+            <div class="delivery-methods">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Por E-mail</h3>
+                    <p>Enviaremos atualizações em cada etapa do processo de entrega.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Por SMS</h3>
+                    <p>Ative as notificações por SMS para receber alertas importantes.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>No Nosso Site</h3>
+                    <p>Acesse "Meus Pedidos" na sua conta para ver o status atualizado.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dúvidas Frequentes -->
+        <div class="delivery-section">
+            <h2>Dúvidas Frequentes</h2>
+            
+            <div class="faq-item">
+                <h3>Qual o prazo para postagem após a compra?</h3>
+                <p>Enviamos todos os pedidos em até 2 dias úteis após a confirmação do pagamento.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Posso alterar o endereço de entrega após a compra?</h3>
+                <p>Sim, desde que o pedido ainda não tenha sido enviado. Entre em contato conosco o mais rápido possível.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>O que acontece se eu não estiver em casa no momento da entrega?</h3>
+                <p>O entregador fará até 3 tentativas de entrega. Após isso, o pacote será devolvido e entraremos em contato.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Vocês fazem entregas internacionais?</h3>
+                <p>No momento, atendemos apenas todo o território nacional.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="pagamento.html">Formas de Pagamento</a></li>
+                    <li><a href="entrega.html">Formas de Entrega</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

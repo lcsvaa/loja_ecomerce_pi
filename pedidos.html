@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos | Nome da Loja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Estilos específicos para a página de pedidos */
+        .banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .orders-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        
+        .order-tabs {
+            display: flex;
+            border-bottom: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+        
+        .order-tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            position: relative;
+            color: #ccc;
+            font-weight: 600;
+        }
+        
+        .order-tab.active {
+            color: white;
+        }
+        
+        .order-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #e91e63;
+        }
+        
+        .order-list {
+            display: none;
+        }
+        
+        .order-list.active {
+            display: block;
+        }
+        
+        .order-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .order-id {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .order-date {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .order-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-processing {
+            background-color: #ff9800;
+            color: #111;
+        }
+        
+        .status-shipped {
+            background-color: #2196f3;
+            color: white;
+        }
+        
+        .status-delivered {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .status-cancelled {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .order-details {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .order-products {
+            flex: 2;
+        }
+        
+        .order-summary {
+            flex: 1;
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .product-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .product-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .product-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-variant {
+            color: #ccc;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-weight: 600;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+        
+        .summary-total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c2185b;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid #666;
+            color: #ccc;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #e91e63;
+            color: white;
+        }
+        
+        .empty-orders {
+            text-align: center;
+            padding: 3rem;
+            color: #ccc;
+        }
+        
+        .empty-orders i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .empty-orders p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-continue {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #e91e63;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-continue:hover {
+            background-color: #c2185b;
+        }
+        
+        @media (max-width: 1024px) {
+            .order-details {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .order-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .product-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .product-image {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .order-actions {
+                flex-direction: column;
+            }
+            
+            .action-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Meus Pedidos</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="orders-container">
+        <!-- Abas de Navegação -->
+        <div class="order-tabs">
+            <div class="order-tab active" data-tab="all">Todos</div>
+            <div class="order-tab" data-tab="processing">Processando</div>
+            <div class="order-tab" data-tab="shipped">Enviados</div>
+            <div class="order-tab" data-tab="delivered">Entregues</div>
+            <div class="order-tab" data-tab="cancelled">Cancelados</div>
+        </div>
+
+        <!-- Lista de Pedidos - Todos -->
+        <div class="order-list active" id="all-orders">
+            <!-- Pedido 1 -->
+            <div class="order-card">
+                <div class="order-header">
+                    <div>
+                        <span class="order-id">Pedido #12345</span>
+                        <span class="order-date">Realizado em: 15/03/2023</span>
+                    </div>
+                    <span class="order-status status-delivered">Entregue</span>
+                </div>
+                
+                <div class="order-details">
+                    <div class="order-products">
+                        <div class="product-item">
+                            <img src="img/produtos/produto1.jpg" alt="Moletom Oversized" class="product-image">
+                            <div class="product-info">
+                                <h4 class="product-name">Moletom Oversized</h4>
+                                <p class="product-variant">Tamanho: M | Cor: Preto</p>
+                                <p class="product-price">R$ 249,90</p>
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <img src="img/produtos/produto2.jpg" alt="Camiseta Estampada" class="product-image">
+                            <div class="product-info">
+                                <h4 class="product-name">Camiseta Estampada</h4>
+                                <p class="product-variant">Tamanho: G | Cor: Branco</p>
+                                <p class="product-price">R$ 129,90</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span>R$ 379,80</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Frete:</span>
+                            <span>R$ 15,90</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Desconto:</span>
+                            <span>- R$ 25,00</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total:</span>
+                            <span>R$ 370,70</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-actions">
+                    <button class="action-btn btn-primary">Comprar Novamente</button>
+                    <button class="action-btn btn-secondary">Avaliar Produtos</button>
+                </div>
+            </div>
+            
+            <!-- Pedido 2 -->
+            <div class="order-card">
+                <div class="order-header">
+                    <div>
+                        <span class="order-id">Pedido #12344</span>
+                        <span class="order-date">Realizado em: 10/03/2023</span>
+                    </div>
+                    <span class="order-status status-shipped">Enviado</span>
+                </div>
+                
+                <div class="order-details">
+                    <div class="order-products">
+                        <div class="product-item">
+                            <img src="img/produtos/produto3.jpg" alt="Calça Cargo" class="product-image">
+                            <div class="product-info">
+                                <h4 class="product-name">Calça Cargo</h4>
+                                <p class="product-variant">Tamanho: 42 | Cor: Verde Militar</p>
+                                <p class="product-price">R$ 199,90</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span>R$ 199,90</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Frete:</span>
+                            <span>Grátis</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Desconto:</span>
+                            <span>- R$ 0,00</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total:</span>
+                            <span>R$ 199,90</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-actions">
+                    <button class="action-btn btn-primary">Rastrear Pedido</button>
+                    <button class="action-btn btn-secondary">Detalhes</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lista de Pedidos - Processando -->
+        <div class="order-list" id="processing-orders">
+            <div class="empty-orders">
+                <i class="fas fa-box-open"></i>
+                <h3>Nenhum pedido em processamento</h3>
+                <p>Você não tem nenhum pedido sendo processado no momento.</p>
+                <a href="index.html" class="btn-continue">Continuar Comprando</a>
+            </div>
+        </div>
+        
+        <!-- Lista de Pedidos - Enviados -->
+        <div class="order-list" id="shipped-orders">
+            <!-- Pedido do exemplo anterior apareceria aqui -->
+        </div>
+        
+        <!-- Lista de Pedidos - Entregues -->
+        <div class="order-list" id="delivered-orders">
+            <!-- Pedido do exemplo anterior apareceria aqui -->
+        </div>
+        
+        <!-- Lista de Pedidos - Cancelados -->
+        <div class="order-list" id="cancelled-orders">
+            <div class="empty-orders">
+                <i class="fas fa-ban"></i>
+                <h3>Nenhum pedido cancelado</h3>
+                <p>Você não tem nenhum pedido cancelado.</p>
+                <a href="index.html" class="btn-continue">Continuar Comprando</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="pagamento.html">Formas de Pagamento</a></li>
+                    <li><a href="entrega.html">Formas de Entrega</a></li>
+                    <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+
+        // Tabs de Pedidos
+        const tabs = document.querySelectorAll('.order-tab');
+        const orderLists = document.querySelectorAll('.order-list');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all order lists
+                orderLists.forEach(list => list.classList.remove('active'));
+                // Show the selected order list
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-orders`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

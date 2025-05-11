@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roupas | Nome da Loja</title>
+    <title>Roupas | Manifesto</title>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Icone -->
+    <link rel="icon" href="img/icone.png" type="image/png">
     <style>
         /* Reset básico e variáveis */
         :root {
@@ -444,7 +447,6 @@
             background-color: #0a0a0a;
             text-align: center;
             padding: 1.5rem;
-            margin-top: 3rem;
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
@@ -537,37 +539,36 @@
     </style>
 </head>
 <body>
-    <!-- NAVBAR CORRIGIDA -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-left">
-                <a href="index.html">
-                    <img src="img/logo.png" alt="Logo da loja" class="logo">
-                </a>
-            </div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-left">
+        <a href="index.html">
+        <img src="img/logo.png" alt="Logo da loja" class="logo"/>
+        </a>
+      </div>
 
-            <div class="nav-center" id="nav-center">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="roupas.html">Roupas</a></li>
-                    <li><a href="sobre.html">Sobre Nós</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
-            </div>
+      <div class="nav-center" id="nav-center">
+        <ul class="nav-links">
+          <li><a href="roupas.html">Roupas</a></li>
+          <li><a href="novidades.html">Novidades</a></li>
+          <li><a href="acessorios.html">Acessórios</a></li>
+        </ul>
+      </div>
 
-            <div class="nav-right" id="nav-right">
-                <input type="text" class="search-bar" placeholder="Pesquisar...">
-                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
-                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
-            </div>
+      <div class="nav-right" id="nav-right">
+        <input type="text" placeholder="Buscar produtos..." class="search-bar" />
+        <a href="login.html" class="login-btn"><i class="fa fa-user"></i> Login</a>
+        <a href="cart.html" class="cart-btn"><i class="fa fa-shopping-cart"></i></a>
+      </div>
 
-            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
-    </nav>
+      <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
 
     <!-- BANNER -->
     <div class="banner">
@@ -676,9 +677,9 @@
             <div class="footer-col">
                 <h4>Categorias</h4>
                 <ul>
-                    <li><a href="#">Roupas</a></li>
-                    <li><a href="#">Calçados</a></li>
-                    <li><a href="#">Acessórios</a></li>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
                 </ul>
             </div>
             <div class="footer-col">

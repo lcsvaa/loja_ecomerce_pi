@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho | Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icone.png" type="image/png">
+    <style>
+        /* Estilos específicos para a página do carrinho */
+        .banner {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .cart-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .cart-items {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .cart-summary {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .cart-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .cart-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #e91e63;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            color: #ccc;
+        }
+        
+        .cart-empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .cart-empty p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-continue {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #e91e63;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-continue:hover {
+            background-color: #c2185b;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .item-details {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .item-variant {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-price {
+            font-weight: 600;
+            color: #e91e63;
+            margin-bottom: 1rem;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #2a2a2a;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            background-color: #2a2a2a;
+            border: none;
+            color: white;
+            padding: 0.3rem;
+            border-radius: 5px;
+        }
+        
+        .remove-item {
+            color: #ccc;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .remove-item:hover {
+            color: #e91e63;
+        }
+        
+        .summary-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #c2185b;
+        }
+        
+        .checkout-btn:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+        
+        .coupon-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .coupon-input {
+            flex: 1;
+            padding: 0.6rem;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: white;
+            width: 50%;
+        }
+        
+        .coupon-btn {
+            padding: 0 1rem;
+            background-color: #2a2a2a;
+            border: 1px solid #e91e63;
+            color: #e91e63;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .coupon-btn:hover {
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cart-container {
+                flex-direction: column;
+            }
+            
+            .cart-items {
+                order: 2;
+            }
+            
+            .cart-summary {
+                order: 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .item-image {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
+
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Buscar produtos...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Seu Carrinho</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="cart-container">
+        <!-- Itens do Carrinho -->
+        <div class="cart-items">
+            <h2 class="cart-title">Seus Itens</h2>
+            
+            <!-- Estado vazio do carrinho -->
+            <!-- <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Seu carrinho está vazio</h3>
+                <p>Adicione itens para começar a comprar</p>
+                <a href="index.html" class="btn-continue">Continuar Comprando</a>
+            </div> -->
+            
+            <!-- Itens no carrinho -->
+            <div class="cart-item">
+                <img src="img/produtos/produto1.jpg" alt="Moletom Oversized" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Moletom Oversized</h3>
+                    <p class="item-variant">Tamanho: M | Cor: Preto</p>
+                    <p class="item-price">R$ 249,90</p>
+                    <div class="item-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="remove-item">Remover</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-item">
+                <img src="img/produtos/produto2.jpg" alt="Camiseta Estampada" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Camiseta Estampada</h3>
+                    <p class="item-variant">Tamanho: G | Cor: Branco</p>
+                    <p class="item-price">R$ 129,90</p>
+                    <div class="item-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="2" min="1" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="remove-item">Remover</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-item">
+                <img src="img/produtos/produto4.jpg" alt="Boné Ajustável" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">Boné Ajustável</h3>
+                    <p class="item-variant">Cor: Preto</p>
+                    <p class="item-price">R$ 89,90</p>
+                    <div class="item-actions">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="remove-item">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Resumo do Pedido -->
+        <div class="cart-summary">
+            <h2 class="cart-title">Resumo do Pedido</h2>
+            
+            <div class="summary-card">
+                <div class="summary-row">
+                    <span>Subtotal (3 itens)</span>
+                    <span>R$ 469,70</span>
+                </div>
+                <div class="summary-row">
+                    <span>Frete</span>
+                    <span>R$ 15,90</span>
+                </div>
+                <div class="summary-row">
+                    <span>Desconto</span>
+                    <span>- R$ 0,00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span>R$ 485,60</span>
+                </div>
+            </div>
+            
+            <div class="summary-card">
+                <h3>Cupom de Desconto</h3>
+                <div class="coupon-form">
+                    <input type="text" placeholder="Código do cupom" class="coupon-input">
+                    <button class="coupon-btn">Aplicar</button>
+                </div>
+            </div>
+            
+            <button class="checkout-btn">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="acessorios.html">Acessórios</a></li>
+                    <li><a href="novidades.html">Novidades</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="pagamento.html">Formas de Pagamento</a></li>
+                    <li><a href="entrega.html">Formas de Entrega</a></li>
+                    <li><a href="meus-pedidos.html">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
+    <div class="footer-creditos">
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
+    </div>
+
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
+
+        // Controle de Quantidade
+        document.querySelectorAll('.quantity-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+                
+                if (this.classList.contains('minus')) {
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                } else if (this.classList.contains('plus')) {
+                    input.value = value + 1;
+                }
+                
+                // Aqui você atualizaria o total no carrinho
+                updateCartTotal();
+            });
+        });
+
+        // Remover Item
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.cart-item');
+                item.style.animation = 'fadeOut 0.3s ease';
+                
+                setTimeout(() => {
+                    item.remove();
+                    // Verifica se o carrinho está vazio
+                    if (document.querySelectorAll('.cart-item').length === 0) {
+                        showEmptyCart();
+                    } else {
+                        updateCartTotal();
+                    }
+                }, 300);
+            });
+        });
+
+        // Aplicar Cupom
+        document.querySelector('.coupon-btn').addEventListener('click', function() {
+            const couponCode = document.querySelector('.coupon-input').value;
+            
+            if (couponCode.trim() === '') {
+                alert('Por favor, insira um código de cupom');
+                return;
+            }
+            
+            // Aqui você validaria o cupom com o backend
+            // Simulação de cupom válido
+            if (couponCode.toUpperCase() === 'DESCONTO10') {
+                alert('Cupom aplicado com sucesso! 10% de desconto concedido.');
+                // Atualizar o resumo com o desconto
+                document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = '- R$ 48,56';
+                document.querySelector('.summary-total span:last-child').textContent = 'R$ 437,04';
+            } else {
+                alert('Cupom inválido ou expirado');
+            }
+        });
+
+        // Finalizar Compra
+        document.querySelector('.checkout-btn').addEventListener('click', function() {
+            // Verifica se o carrinho está vazio
+            if (document.querySelectorAll('.cart-item').length === 0) {
+                alert('Seu carrinho está vazio. Adicione itens antes de finalizar a compra.');
+                return;
+            }
+            
+            // Redireciona para a página de checkout
+            window.location.href = 'checkout.html';
+        });
+
+        // Função para mostrar carrinho vazio
+        function showEmptyCart() {
+            const cartItems = document.querySelector('.cart-items');
+            cartItems.innerHTML = `
+                <h2 class="cart-title">Seus Itens</h2>
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Seu carrinho está vazio</h3>
+                    <p>Adicione itens para começar a comprar</p>
+                    <a href="index.html" class="btn-continue">Continuar Comprando</a>
+                </div>
+            `;
+            
+            // Atualiza o resumo para zero
+            document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = 'R$ 0,00';
+            document.querySelector('.summary-row:nth-child(2) span:last-child').textContent = 'R$ 0,00';
+            document.querySelector('.summary-row:nth-child(3) span:last-child').textContent = '- R$ 0,00';
+            document.querySelector('.summary-total span:last-child').textContent = 'R$ 0,00';
+            
+            // Desabilita o botão de finalizar compra
+            document.querySelector('.checkout-btn').disabled = true;
+        }
+
+        // Função para atualizar o total do carrinho
+        function updateCartTotal() {
+            // Esta função seria mais complexa em uma implementação real
+            // Aqui está apenas uma simulação básica
+            console.log('Atualizando total do carrinho...');
+            // Em uma implementação real, você calcularia baseado nos itens e quantidades
+        }
+
+        // Inicialização
+        updateCartTotal();
+    </script>
+</body>
+</html>

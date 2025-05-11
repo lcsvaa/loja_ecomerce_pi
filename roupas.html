@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Exemplo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"> <!-- Referencie seu CSS aqui -->
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container">
+      <div class="nav-left">
+        <img src="img/logo.png" alt="Logo da loja" class="logo" />
+      </div>
+
+      <div class="nav-center" id="nav-center">
+        <ul class="nav-links">
+          <li><a href="#">Roupas</a></li>
+          <li><a href="#">Novidades</a></li>
+          <li><a href="#">Acessórios</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right" id="nav-right">
+        <input type="text" placeholder="Buscar produtos..." class="search-bar" />
+        <a href="login.html" class="login-btn"><i class="fa fa-user"></i> Login</a>
+        <a href="cart.html" class="cart-btn"><i class="fa fa-shopping-cart"></i></a>
+      </div>
+
+      <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- SEÇÃO LANÇAMENTOS -->
+  <section class="lancamentos container">
+    <h2>Lançamentos</h2>
+    <div class="produto-lista">
+      <div class="produto-card">
+        <img src="img/produto1.png" alt="Produto 1">
+        <div class="produto-info">
+          <h3>Produto Incrível</h3>
+          <span class="preco">R$ 199,90</span>
+          <a href="#" class="btn-comprar">Comprar</a>
+        </div>
+      </div>
+      <!-- Repetir outros produtos -->
+    </div>
+  </section>
+
+  <!-- SEÇÃO COLEÇÃO -->
+  <section class="colecao container">
+    <h2>Coleção</h2>
+    <div class="produto-lista">
+      <div class="produto-card">
+        <img src="img/produto2.png" alt="Produto 2">
+        <div class="produto-info">
+          <h3>Produto Clássico</h3>
+          <span class="preco">R$ 149,90</span>
+          <a href="#" class="btn-comprar">Comprar</a>
+        </div>
+      </div>
+      <!-- Repetir outros produtos -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-col">
+        <h4>Loja</h4>
+        <ul>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Trabalhe Conosco</a></li>
+          <li><a href="#">Sustentabilidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Entrega</a></li>
+          <li><a href="#">Devoluções</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes Sociais</h4>
+        <div class="social-icons">
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-creditos">
+      <p>&copy; 2025 Loja Exemplo. Feito com ♥ por <a href="#">SeuNome</a>.</p>
+    </div>
+  </footer>
+
+  <!-- JS para Menu e Carrossel -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navCenter = document.querySelector('.nav-center');
+    const navRight = document.querySelector('.nav-right');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navCenter.classList.toggle('open');
+      navRight.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+
+    const carousel = document.getElementById('carousel');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let index = 0;
+
+    next.addEventListener('click', () => {
+      index = (index + 1) % carousel.children.length;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    prev.addEventListener('click', () => {
+      index = (index - 1 + carousel.children.length) % carousel.children.length;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    });
+  </script>
+
+</body>
+</html>

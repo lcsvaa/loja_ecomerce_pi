@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nós - Manifesto</title>
+  <style>
+    /* Reset e estilo básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Estilos do container principal */
+    .sobre-nos-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .sobre-nos-header {
+      margin-bottom: 30px;
+    }
+
+    .sobre-nos-header h1 {
+      font-size: 2.5rem;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .sobre-nos-header p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    /* Estilos das imagens e distribuições */
+    .sobre-nos-imagens {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .sobre-nos-imagem {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sobre-nos-imagem img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .sobre-nos-imagens {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Estilo do footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Seção Sobre Nós -->
+  <section class="sobre-nos-container">
+    <div class="sobre-nos-header">
+      <h1>Sobre Nós</h1>
+      <p>Somos uma marca de moda streetwear com atitude, estilo e qualidade. Nosso objetivo é trazer produtos autênticos e modernos para quem busca se expressar através do estilo.</p>
+    </div>
+
+    <div class="sobre-nos-imagens">
+      <!-- Logo -->
+      <div class="sobre-nos-imagem">
+        <img src="img/logo.png" alt="Logo da Manifesto" />
+        <p>Logo da Marca</p>
+      </div>
+
+      <!-- Mascote -->
+      <div class="sobre-nos-imagem">
+        <img src="img/mascote.png" alt="Mascote da Manifesto" />
+        <p>Nossa Mascote</p>
+      </div>
+
+      <!-- Fachada da Loja -->
+      <div class="sobre-nos-imagem">
+        <img src="img/loja.png" alt="Fachada da loja Manifesto" />
+        <p>Fachada da Nossa Loja</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Manifesto | Todos os direitos reservados</p>
+    <p>
+      <a href="https://github.com/BexTheFrog/" target="_blank">Beatriz</a> |
+      <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+      <a href="https://Instagram.com/__ryanszz" target="_blank">Ryan</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>

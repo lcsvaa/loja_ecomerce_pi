@@ -1,144 +1,276 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre Nós - Manifesto</title>
-  <style>
-    /* Reset e estilo básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <title>Loja Streetwear</title>
+  <link rel="stylesheet" href="css/style.css" />
 
-    body {
-      font-family: 'Kanit', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
-    /* Estilos do container principal */
-    .sobre-nos-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin: 20px;
-    }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Estilos específicos para a página Sobre Nós */
+        .sobre-header {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fachada-loja.jpg') center/cover;
+            color: white;
+        }
+        
+        .sobre-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .sobre-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .visual-identity {
+            padding: 4rem 0;
+            background-color: var(--darker-bg);
+        }
+        
+        .identity-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .identity-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            transition: transform var(--transition-speed) ease;
+            flex: 1;
+            max-width: 400px;
+        }
+        
+        .identity-item-wide {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            transition: transform var(--transition-speed) ease;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .identity-item:hover, .identity-item-wide:hover {
+            transform: translateY(-10px);
+        }
+        
+        .identity-item img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+        }
+        
+        .identity-item-wide img {
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+        }
+        
+        .identity-item h3, .identity-item-wide h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .nossa-historia {
+            padding: 4rem 0;
+            background-color: var(--dark-bg);
+        }
+        
+        .nossa-historia .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .nossa-historia img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .identity-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .identity-item, .identity-item-wide {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .nossa-historia .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 
-    .sobre-nos-header {
-      margin-bottom: 30px;
-    }
-
-    .sobre-nos-header h1 {
-      font-size: 2.5rem;
-      color: #333;
-      font-weight: 700;
-    }
-
-    .sobre-nos-header p {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
-    /* Estilos das imagens e distribuições */
-    .sobre-nos-imagens {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      width: 100%;
-      margin-top: 30px;
-    }
-
-    .sobre-nos-imagem {
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .sobre-nos-imagem img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .sobre-nos-imagens {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Estilo do footer */
-    .footer {
-      background-color: #333;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .footer a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <!-- Icone -->
+    <link rel="icon" href="img/icone.png" type="image/png">
 </head>
-
 <body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-left">
+        <a href="index.html">
+        <img src="img/logo.png" alt="Logo da loja" class="logo"/>
+        </a> 
+      </div>
 
-  <!-- Seção Sobre Nós -->
-  <section class="sobre-nos-container">
-    <div class="sobre-nos-header">
-      <h1>Sobre Nós</h1>
-      <p>Somos uma marca de moda streetwear com atitude, estilo e qualidade. Nosso objetivo é trazer produtos autênticos e modernos para quem busca se expressar através do estilo.</p>
+      <div class="nav-center" id="nav-center">
+        <ul class="nav-links">
+          <li><a href="#">Roupas</a></li>
+          <li><a href="#">Novidades</a></li>
+          <li><a href="#">Acessórios</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right" id="nav-right">
+        <input type="text" placeholder="Buscar produtos..." class="search-bar" />
+        <a href="login.html" class="login-btn"><i class="fa fa-user"></i> Login</a>
+        <a href="cart.html" class="cart-btn"><i class="fa fa-shopping-cart"></i></a>
+      </div>
+
+      <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
+  </nav>
 
-    <div class="sobre-nos-imagens">
-      <!-- Logo -->
-      <div class="sobre-nos-imagem">
-        <img src="img/logo.png" alt="Logo da Manifesto" />
-        <p>Logo da Marca</p>
-      </div>
+    <!-- Seção Hero Sobre Nós -->
+    <header class="sobre-header">
+        <div class="container">
+            <h1>Sobre Nós</h1>
+            <p>Conheça a história por trás da nossa marca e o que nos torna únicos no mercado.</p>
+        </div>
+    </header>
 
-      <!-- Mascote -->
-      <div class="sobre-nos-imagem">
-        <img src="img/mascote.png" alt="Mascote da Manifesto" />
-        <p>Nossa Mascote</p>
-      </div>
+    <!-- Seção de Identidade Visual (layout modificado) -->
+    <section class="visual-identity">
+        <div class="container">
+            <!-- Linha com logo e mascote lado a lado -->
+            <div class="identity-row">
+                <div class="identity-item">
+                    <img src="img/logo.png " alt="Logo da Loja">
+                    <h3>Nosso Logo</h3>
+                    <p>Mais do que uma marca, somos uma atitude.
+Manifesto vem de “manifestar” — nosso estilo, nossas ideias, nosso jeito de ser. O (011) é a raiz, o código da Grande São Paulo, onde nascemos e nos conectamos com o movimento urbano e criativo da cidade. E as quatro estrelas? Um tributo à bandeira de São Paulo e ao orgulho de representar nosso estado com autenticidade.</p>
+                </div>
+                
+                <div class="identity-item">
+                    <img src="img/mascote.png" alt="Mascote da Loja">
+                    <h3>Nosso Mascote</h3>
+                    <p>Cheia de atitude, estilo e criatividade, ela é a personificação da nossa energia. Com visual marcante e espírito inquieto, representa tudo o que acreditamos: autenticidade, movimento e paixão pelo que fazemos.</p>
+                </div>
+            </div>
+            
+            <!-- Linha com a fachada da loja (mais larga) -->
+            <div class="identity-item-wide">
+                <img src="img/loja.png" alt="Fachada da Loja">
+                <h3>Nossa Loja Física</h3>
+                <p>No coração da cidade, uma extensão viva da nossa essência. A loja Manifesto é mais do que ponto de venda — é ponto de encontro. Um espaço onde estilo, atitude e energia urbana se cruzam. Vem sentir de perto o que a gente acredita: vestir é manifestar quem você é.</p>
+            </div>
+        </div>
+    </section>
 
-      <!-- Fachada da Loja -->
-      <div class="sobre-nos-imagem">
-        <img src="img/loja.png" alt="Fachada da loja Manifesto" />
-        <p>Fachada da Nossa Loja</p>
-      </div>
-    </div>
-  </section>
+    <!-- Seção Nossa História -->
+    <section class="nossa-historia">
+        <div class="container">
+            <div>
+                <h2>Nossa História</h2>
+                <p>Fundada em 2010, nossa loja começou como um pequeno empreendimento familiar com a missão de trazer os melhores produtos para nossos clientes.</p>
+                <p>Com o tempo, crescemos e nos tornamos referência no mercado, sem nunca perder nosso compromisso com a qualidade e atendimento personalizado.</p>
+                <p>Hoje, temos orgulho de servir milhares de clientes satisfeitos em todo o país, tanto em nossa loja física quanto através do nosso e-commerce.</p>
+            </div>
+            <img src="https://i.pinimg.com/736x/52/6c/c9/526cc98a1a9b39bd7c9caa9b48751545.jpg" alt="Nossa Equipe">
+        </div>
+    </section>
 
-  <!-- Footer -->
+ <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2025 Manifesto | Todos os direitos reservados</p>
-    <p>
-      <a href="https://github.com/BexTheFrog/" target="_blank">Beatriz</a> |
-      <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
-      <a href="https://Instagram.com/__ryanszz" target="_blank">Ryan</a>
-    </p>
+    <div class="container">
+      <div class="footer-col">
+        <h4>Loja</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="#">Roupas</a></li>
+          <li><a href="#">Calçados</a></li>
+          <li><a href="#">Acessórios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda e Suporte</h4>
+        <ul>
+          <li><a href="#">Formas de Pagamento</a></li>
+          <li><a href="#">Formas de Entrega</a></li>
+          <li><a href="#">Meus Pedidos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Siga nossas redes</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
   </footer>
 
-</body>
+  <!-- Créditos -->
+  <div class="footer-creditos">
+    <p>
+      <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+      <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+      <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+    </p>
+  </div>
 
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <script>
+        // Seu JavaScript existente para o menu hamburguer
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navCenter = document.querySelector('.nav-center');
+        const navRight = document.querySelector('.nav-right');
+        const body = document.body;
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+        });
+    </script>
+</body>
 </html>

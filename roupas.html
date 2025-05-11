@@ -1,137 +1,756 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja Exemplo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css"> <!-- Referencie seu CSS aqui -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roupas | Nome da Loja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset básico e variáveis */
+        :root {
+            --primary-color: #e91e63;
+            --dark-bg: #111;
+            --darker-bg: #000;
+            --card-bg: #1a1a1a;
+            --text-color: #fff;
+            --text-secondary: #ccc;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* NAVBAR CORRIGIDA */
+        .navbar {
+            background-color: var(--darker-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left .logo {
+            height: 40px;
+            width: auto;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .nav-left .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-center {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            display: block;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-bar {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            width: 200px;
+            font-size: 0.9rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .login-btn, .cart-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .login-btn {
+            background-color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+        }
+
+        .login-btn:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        .cart-btn {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .cart-btn:hover {
+            color: var(--primary-color);
+        }
+
+        /* Menu Hamburguer */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-color);
+            transition: all var(--transition-speed) ease;
+            transform-origin: center;
+        }
+
+        /* Menu ativo */
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* BANNER */
+        .banner {
+            background: linear-gradient(135deg, var(--primary-color), #c2185b);
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FILTROS */
+        .filters-container {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem auto;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-section {
+            background-color: var(--card-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+        }
+
+        .size-filters {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .size-option {
+            padding: 0.4rem 0.8rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            font-weight: 600;
+        }
+
+        .size-option:hover, .size-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .sort-options select {
+            padding: 0.5rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* PRODUTOS */
+        .produto-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .produto-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .produto-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .produto-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .produto-info {
+            padding: 1.5rem;
+        }
+
+        .produto-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .produto-tamanhos {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tamanho-option {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .tamanho-option:hover, .tamanho-option.selected {
+            background-color: var(--primary-color);
+        }
+
+        .tamanho-option.esgotado {
+            opacity: 0.3;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .preco {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .btn-comprar {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-comprar:hover {
+            background-color: #c2185b;
+            letter-spacing: 2px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 0 0;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col {
+            padding: 0 1rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-creditos {
+            background-color: #0a0a0a;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-creditos a {
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-creditos a:hover {
+            color: var(--primary-color);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
+            .produto-lista {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-center, .nav-right {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--darker-bg);
+                padding: 2rem;
+                transition: left var(--transition-speed) ease;
+                z-index: 999;
+            }
+            
+            .nav-center {
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            
+            .nav-right {
+                top: auto;
+                bottom: 0;
+                flex-direction: column;
+                align-items: center;
+                padding-bottom: 3rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .search-bar {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .login-btn, .cart-btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .nav-center.open, .nav-right.open {
+                left: 0;
+            }
+            
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .produto-lista {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- NAVBAR CORRIGIDA -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo da loja" class="logo">
+                </a>
+            </div>
 
-  <!-- NAVBAR -->
-<nav class="navbar">
+            <div class="nav-center" id="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="roupas.html">Roupas</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right" id="nav-right">
+                <input type="text" class="search-bar" placeholder="Pesquisar...">
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+
+            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <h1>Roupas</h1>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
-      <div class="nav-left">
-        <img src="img/logo.png" alt="Logo da loja" class="logo" />
-      </div>
-
-      <div class="nav-center" id="nav-center">
-        <ul class="nav-links">
-          <li><a href="#">Roupas</a></li>
-          <li><a href="#">Novidades</a></li>
-          <li><a href="#">Acessórios</a></li>
-        </ul>
-      </div>
-
-      <div class="nav-right" id="nav-right">
-        <input type="text" placeholder="Buscar produtos..." class="search-bar" />
-        <a href="login.html" class="login-btn"><i class="fa fa-user"></i> Login</a>
-        <a href="cart.html" class="cart-btn"><i class="fa fa-shopping-cart"></i></a>
-      </div>
-
-      <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
-  </nav>
-
-
-  <!-- SEÇÃO LANÇAMENTOS -->
-  <section class="lancamentos container">
-    <h2>Lançamentos</h2>
-    <div class="produto-lista">
-      <div class="produto-card">
-        <img src="img/produto1.png" alt="Produto 1">
-        <div class="produto-info">
-          <h3>Produto Incrível</h3>
-          <span class="preco">R$ 199,90</span>
-          <a href="#" class="btn-comprar">Comprar</a>
+        <!-- FILTROS -->
+        <div class="filters-container">
+            <div class="filter-section">
+                <div class="size-filters">
+                    <div class="size-option selected">P</div>
+                    <div class="size-option">M</div>
+                    <div class="size-option">G</div>
+                    <div class="size-option">GG</div>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <div class="sort-options">
+                    <span>Ordenar por:</span>
+                    <select>
+                        <option>Mais recentes</option>
+                        <option>Menor preço</option>
+                        <option>Maior preço</option>
+                        <option>Mais vendidos</option>
+                    </select>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- Repetir outros produtos -->
-    </div>
-  </section>
 
-  <!-- SEÇÃO COLEÇÃO -->
-  <section class="colecao container">
-    <h2>Coleção</h2>
-    <div class="produto-lista">
-      <div class="produto-card">
-        <img src="img/produto2.png" alt="Produto 2">
-        <div class="produto-info">
-          <h3>Produto Clássico</h3>
-          <span class="preco">R$ 149,90</span>
-          <a href="#" class="btn-comprar">Comprar</a>
-        </div>
-      </div>
-      <!-- Repetir outros produtos -->
-    </div>
-  </section>
+        <!-- LISTA DE PRODUTOS -->
+        <div class="produto-lista">
+            <!-- Produto 1 -->
+            <div class="produto-card">
+                <img src="img/produto1.png" alt="Camiseta Premium">
+                <div class="produto-info">
+                    <h3>Camiseta Premium</h3>
+                    <div class="produto-tamanhos">
+                        <div class="tamanho-option">P</div>
+                        <div class="tamanho-option selected">M</div>
+                        <div class="tamanho-option">G</div>
+                    </div>
+                    <p class="preco">R$ 199,90</p>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-col">
-        <h4>Loja</h4>
-        <ul>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Trabalhe Conosco</a></li>
-          <li><a href="#">Sustentabilidade</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Ajuda</h4>
-        <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Entrega</a></li>
-          <li><a href="#">Devoluções</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Redes Sociais</h4>
-        <div class="social-icons">
-          <a href="#">📘</a>
-          <a href="#">📷</a>
-          <a href="#">🐦</a>
+            <!-- Produto 2 -->
+            <div class="produto-card">
+                <img src="img/produto1.png" alt="Camiseta Listrada">
+                <div class="produto-info">
+                    <h3>Camiseta Listrada</h3>
+                    <div class="produto-tamanhos">
+                        <div class="tamanho-option">P</div>
+                        <div class="tamanho-option">M</div>
+                        <div class="tamanho-option selected">G</div>
+                    </div>
+                    <p class="preco">R$ 179,90</p>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="produto-card">
+                <img src="img/produto1.png" alt="Moletom Capuz">
+                <div class="produto-info">
+                    <h3>Moletom com Capuz</h3>
+                    <div class="produto-tamanhos">
+                        <div class="tamanho-option">M</div>
+                        <div class="tamanho-option selected">G</div>
+                        <div class="tamanho-option">GG</div>
+                    </div>
+                    <p class="preco">R$ 249,90</p>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+
+            <!-- Produto 4 -->
+            <div class="produto-card">
+                <img src="img/produto1.png" alt="Bermuda Jeans">
+                <div class="produto-info">
+                    <h3>Bermuda Jeans</h3>
+                    <div class="produto-tamanhos">
+                        <div class="tamanho-option selected">M</div>
+                        <div class="tamanho-option">G</div>
+                    </div>
+                    <p class="preco">R$ 159,90</p>
+                    <button class="btn-comprar">Comprar</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Loja</h4>
+                <ul>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><a href="#">Roupas</a></li>
+                    <li><a href="#">Calçados</a></li>
+                    <li><a href="#">Acessórios</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ajuda e Suporte</h4>
+                <ul>
+                    <li><a href="#">Formas de Pagamento</a></li>
+                    <li><a href="#">Formas de Entrega</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Siga nossas redes</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CRÉDITOS -->
     <div class="footer-creditos">
-      <p>&copy; 2025 Loja Exemplo. Feito com ♥ por <a href="#">SeuNome</a>.</p>
+        <p>
+            <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+            <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+            <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+        </p>
     </div>
-  </footer>
 
-  <!-- JS para Menu e Carrossel -->
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navCenter = document.querySelector('.nav-center');
-    const navRight = document.querySelector('.nav-right');
+    <script>
+        // Menu Hamburguer
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navCenter = document.getElementById('nav-center');
+        const navRight = document.getElementById('nav-right');
+        const body = document.body;
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navCenter.classList.toggle('open');
-      navRight.classList.toggle('open');
-      document.body.classList.toggle('menu-open');
-    });
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navCenter.classList.toggle('open');
+            navRight.classList.toggle('open');
+            body.classList.toggle('menu-open');
+            
+            // Animação das linhas do hamburguer
+            if (hamburgerMenu.classList.contains('active')) {
+                document.querySelectorAll('.hamburger-line').forEach((line, index) => {
+                    if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+                    if (index === 1) line.style.opacity = '0';
+                    if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+                });
+            } else {
+                document.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.transform = '';
+                    line.style.opacity = '';
+                });
+            }
+        });
 
-    const carousel = document.getElementById('carousel');
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
-    let index = 0;
+        // Seleção de tamanhos nos filtros
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                this.parentElement.querySelector('.size-option.selected')?.classList.remove('selected');
+                this.classList.add('selected');
+            });
+        });
 
-    next.addEventListener('click', () => {
-      index = (index + 1) % carousel.children.length;
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-    });
-
-    prev.addEventListener('click', () => {
-      index = (index - 1 + carousel.children.length) % carousel.children.length;
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-    });
-  </script>
-
+        // Seleção de tamanhos nos produtos
+        document.querySelectorAll('.tamanho-option:not(.esgotado)').forEach(option => {
+            option.addEventListener('click', function() {
+                this.parentElement.querySelector('.tamanho-option.selected')?.classList.remove('selected');
+                this.classList.add('selected');
+            });
+        });
+    </script>
 </body>
 </html>

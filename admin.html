@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo | Manifesto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+      <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-left">
+        <a href="index.html">
+          <img src="img/logo.png" alt="Logo da loja" class="logo"/>
+        </a>
+      </div>
+
+      <div class="nav-center" id="nav-center">
+        <ul class="nav-links">
+          <li><a href="roupas.html">Roupas</a></li>
+          <li><a href="novidades.html">Novidades</a></li>
+          <li><a href="acessorios.html">Acessórios</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right" id="nav-right">
+        <input type="text" placeholder="Buscar produtos..." class="search-bar" />
+        <a href="login.html" class="login-btn"><i class="fa fa-user"></i> Login</a>
+        <a href="cart.html" class="cart-btn"><i class="fa fa-shopping-cart"></i></a>
+      </div>
+
+      <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <h3>Painel Administrativo</h3>
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="#pedidos" class="active"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li><a href="#produtos"><i class="fas fa-tshirt"></i> Produtos</a></li>
+                    <li><a href="#estoque"><i class="fas fa-boxes"></i> Estoque</a></li>
+                    <li><a href="#carrossel"><i class="fas fa-images"></i> Carrossel</a></li>
+                    <li><a href="#lancamentos"><i class="fas fa-star"></i> Lançamentos</a></li>
+                    <li><a href="#colecao"><i class="fas fa-layer-group"></i> Coleção X</a></li>
+                    <li><a href="#novidades"><i class="fas fa-newspaper"></i> Novidades</a></li>
+                    <li><a href="#acessorios"><i class="fas fa-ring"></i> Acessórios</a></li>
+                    <li><a href="#cupons"><i class="fas fa-tag"></i> Cupons</a></li>
+                    <li><a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="index.html" style="color: #f44336;"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1><i class="fas fa-crown"></i> Bem-vindo, Administrador</h1>
+                <input type="text" class="search-bar-admin" placeholder="Pesquisar...">
+            </div>
+
+            <!-- Seção de Pedidos -->
+            <section id="pedidos" class="admin-section">
+                <h2><i class="fas fa-shopping-bag"></i> Gerenciamento de Pedidos</h2>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="todos">Todos</div>
+                        <div class="tab" data-tab="pendentes">Pendentes</div>
+                        <div class="tab" data-tab="processamento">Em Processamento</div>
+                        <div class="tab" data-tab="enviados">Enviados</div>
+                        <div class="tab" data-tab="entregues">Entregues</div>
+                        <div class="tab" data-tab="cancelados">Cancelados</div>
+                    </div>
+                </div>
+                
+                <div class="tab-content active" id="todos">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Data</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1001</td>
+                                <td>João Silva</td>
+                                <td>15/05/2023</td>
+                                <td>R$ 349,90</td>
+                                <td><span class="status-badge status-pending">Pendente</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#1000</td>
+                                <td>Maria Souza</td>
+                                <td>14/05/2023</td>
+                                <td>R$ 229,90</td>
+                                <td><span class="status-badge status-completed">Entregue</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#999</td>
+                                <td>Carlos Oliveira</td>
+                                <td>12/05/2023</td>
+                                <td>R$ 189,90</td>
+                                <td><span class="status-badge status-completed">Entregue</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#998</td>
+                                <td>Ana Pereira</td>
+                                <td>10/05/2023</td>
+                                <td>R$ 459,80</td>
+                                <td><span class="status-badge status-canceled">Cancelado</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="tab-content" id="pendentes" style="display: none;">
+                    <!-- Conteúdo dos pedidos pendentes -->
+                </div>
+                
+                <!-- Botão para adicionar novo pedido (se necessário) -->
+                <button class="btn btn-primary" style="margin-top: 1rem;">
+                    <i class="fas fa-plus"></i> Adicionar Pedido Manual
+                </button>
+            </section>
+
+            <!-- Seção de Produtos -->
+            <section id="produtos" class="admin-section">
+                <h2><i class="fas fa-tshirt"></i> Gerenciamento de Produtos</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produto-categoria">Categoria</label>
+                        <select id="produto-categoria" class="form-control">
+                            <option value="todos">Todos os Produtos</option>
+                            <option value="roupas">Roupas</option>
+                            <option value="acessorios">Acessórios</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="produto-busca">Buscar Produto</label>
+                        <input type="text" id="produto-busca" class="form-control" placeholder="Digite o nome do produto...">
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagem</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>P001</td>
+                            <td><img src="img/produto1.png" alt="Produto" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>Camiseta Premium</td>
+                            <td>Roupas</td>
+                            <td>R$ 199,90</td>
+                            <td>15</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P002</td>
+                            <td><img src="img/produto2.png" alt="Produto" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>Moletom Capuz</td>
+                            <td>Roupas</td>
+                            <td>R$ 249,90</td>
+                            <td>8</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A001</td>
+                            <td><img src="img/acessorios/chaveiro1.jpg" alt="Produto" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>Chaveiro Logo Metálico</td>
+                            <td>Acessórios</td>
+                            <td>R$ 29,90</td>
+                            <td>42</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="btn btn-primary" style="margin-top: 1rem;">
+                    <i class="fas fa-plus"></i> Adicionar Novo Produto
+                </button>
+            </section>
+
+            <!-- Seção de Estoque -->
+            <section id="estoque" class="admin-section">
+                <h2><i class="fas fa-boxes"></i> Controle de Estoque</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="estoque-filtro">Filtrar por</label>
+                        <select id="estoque-filtro" class="form-control">
+                            <option value="todos">Todos os Itens</option>
+                            <option value="baixo">Estoque Baixo (< 5)</option>
+                            <option value="medio">Estoque Médio (5-15)</option>
+                            <option value="alto">Estoque Alto (> 15)</option>
+                            <option value="esgotado">Esgotados</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estoque-busca">Buscar Produto</label>
+                        <input type="text" id="estoque-busca" class="form-control" placeholder="Digite o nome ou ID do produto...">
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Produto</th>
+                            <th>Tamanhos Disponíveis</th>
+                            <th>Estoque Total</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>P001</td>
+                            <td>Camiseta Premium</td>
+                            <td>
+                                <span class="size-tag">P: 5</span>
+                                <span class="size-tag">M: 7</span>
+                                <span class="size-tag">G: 3</span>
+                            </td>
+                            <td>15</td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P002</td>
+                            <td>Moletom Capuz</td>
+                            <td>
+                                <span class="size-tag">M: 2</span>
+                                <span class="size-tag">G: 4</span>
+                                <span class="size-tag">GG: 2</span>
+                            </td>
+                            <td>8</td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A001</td>
+                            <td>Chaveiro Logo Metálico</td>
+                            <td>-</td>
+                            <td>42</td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="form-row" style="margin-top: 2rem;">
+                    <div class="form-group">
+                        <label for="estoque-produto">Produto</label>
+                        <select id="estoque-produto" class="form-control">
+                            <option value="">Selecione um produto...</option>
+                            <option value="P001">Camiseta Premium</option>
+                            <option value="P002">Moletom Capuz</option>
+                            <option value="A001">Chaveiro Logo Metálico</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estoque-tamanho">Tamanho (se aplicável)</label>
+                        <select id="estoque-tamanho" class="form-control">
+                            <option value="">N/A</option>
+                            <option value="P">P</option>
+                            <option value="M">M</option>
+                            <option value="G">G</option>
+                            <option value="GG">GG</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="estoque-quantidade">Quantidade</label>
+                        <input type="number" id="estoque-quantidade" class="form-control" min="1" value="1">
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button class="btn btn-success">
+                        <i class="fas fa-plus"></i> Adicionar ao Estoque
+                    </button>
+                    <button class="btn btn-danger">
+                        <i class="fas fa-minus"></i> Remover do Estoque
+                    </button>
+                </div>
+            </section>
+
+            <!-- Seção do Carrossel -->
+            <section id="carrossel" class="admin-section">
+                <h2><i class="fas fa-images"></i> Gerenciamento do Carrossel</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            Slide 1
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/produto1.png" alt="Slide 1" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="slide1-texto">Texto do Botão</label>
+                                <input type="text" id="slide1-texto" class="form-control" value="Compre Agora">
+                            </div>
+                            <div class="form-group">
+                                <label for="slide1-link">Link do Botão</label>
+                                <input type="text" id="slide1-link" class="form-control" value="/produto1">
+                            </div>
+                            <div class="form-group">
+                                <label for="slide1-imagem">Alterar Imagem</label>
+                                <input type="file" id="slide1-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Slide 2
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/produto2.png" alt="Slide 2" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="slide2-texto">Texto do Botão</label>
+                                <input type="text" id="slide2-texto" class="form-control" value="Compre Agora">
+                            </div>
+                            <div class="form-group">
+                                <label for="slide2-link">Link do Botão</label>
+                                <input type="text" id="slide2-link" class="form-control" value="/produto2">
+                            </div>
+                            <div class="form-group">
+                                <label for="slide2-imagem">Alterar Imagem</label>
+                                <input type="file" id="slide2-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Slide 3
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/produto3.png" alt="Slide 3" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="slide3-texto">Texto do Botão</label>
+                                <input type="text" id="slide3-texto" class="form-control" value="Compre Agora">
+                            </div>
+                            <div class="form-group">
+                                <label for="slide3-link">Link do Botão</label>
+                                <input type="text" id="slide3-link" class="form-control" value="/produto3">
+                            </div>
+                            <div class="form-group">
+                                <label for="slide3-imagem">Alterar Imagem</label>
+                                <input type="file" id="slide3-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="margin-top: 1.5rem;">
+                    <i class="fas fa-plus"></i> Adicionar Novo Slide
+                </button>
+            </section>
+
+            <!-- Seção de Lançamentos -->
+            <section id="lancamentos" class="admin-section">
+                <h2><i class="fas fa-star"></i> Gerenciamento de Lançamentos</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            Produto 1
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/produto10.png" alt="Produto 1" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="lancamento1-nome">Nome do Produto</label>
+                                <input type="text" id="lancamento1-nome" class="form-control" value="Camiseta Oversized">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento1-preco">Preço</label>
+                                <input type="text" id="lancamento1-preco" class="form-control" value="R$ 129,90">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento1-link">Link do Produto</label>
+                                <input type="text" id="lancamento1-link" class="form-control" value="/produto10">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento1-imagem">Alterar Imagem</label>
+                                <input type="file" id="lancamento1-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Produto 2
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/produto11.png" alt="Produto 2" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="lancamento2-nome">Nome do Produto</label>
+                                <input type="text" id="lancamento2-nome" class="form-control" value="Calça Jogger">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento2-preco">Preço</label>
+                                <input type="text" id="lancamento2-preco" class="form-control" value="R$ 189,90">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento2-link">Link do Produto</label>
+                                <input type="text" id="lancamento2-link" class="form-control" value="/produto11">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento2-imagem">Alterar Imagem</label>
+                                <input type="file" id="lancamento2-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Produto 3
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/produto12.png" alt="Produto 3" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="lancamento3-nome">Nome do Produto</label>
+                                <input type="text" id="lancamento3-nome" class="form-control" value="Boné Snapback">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento3-preco">Preço</label>
+                                <input type="text" id="lancamento3-preco" class="form-control" value="R$ 89,90">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento3-link">Link do Produto</label>
+                                <input type="text" id="lancamento3-link" class="form-control" value="/produto12">
+                            </div>
+                            <div class="form-group">
+                                <label for="lancamento3-imagem">Alterar Imagem</label>
+                                <input type="file" id="lancamento3-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="margin-top: 1.5rem;">
+                    <i class="fas fa-plus"></i> Adicionar Novo Lançamento
+                </button>
+            </section>
+
+            <!-- Seção de Coleção X -->
+            <section id="colecao" class="admin-section">
+                <h2><i class="fas fa-layer-group"></i> Gerenciamento da Coleção X</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            Produto 1
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.pinimg.com/736x/50/e2/7a/50e27a667474ceb55a260c860ace8926.jpg" alt="Produto 1" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="colecao1-nome">Nome do Produto</label>
+                                <input type="text" id="colecao1-nome" class="form-control" value="Jaqueta Destroyed">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao1-preco">Preço</label>
+                                <input type="text" id="colecao1-preco" class="form-control" value="R$ 299,90">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao1-link">Link do Produto</label>
+                                <input type="text" id="colecao1-link" class="form-control" value="/produto20">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao1-imagem">Alterar Imagem</label>
+                                <input type="file" id="colecao1-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Produto 2
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.pinimg.com/736x/c6/d8/5e/c6d85e4f5e6c01810783f4aedce6fced.jpg" alt="Produto 2" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="colecao2-nome">Nome do Produto</label>
+                                <input type="text" id="colecao2-nome" class="form-control" value="Moletom Capuz">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao2-preco">Preço</label>
+                                <input type="text" id="colecao2-preco" class="form-control" value="R$ 229,90">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao2-link">Link do Produto</label>
+                                <input type="text" id="colecao2-link" class="form-control" value="/produto21">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao2-imagem">Alterar Imagem</label>
+                                <input type="file" id="colecao2-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Produto 3
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.pinimg.com/736x/32/a0/40/32a040284ec3caa9e781b291fae82374.jpg" alt="Produto 3" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="colecao3-nome">Nome do Produto</label>
+                                <input type="text" id="colecao3-nome" class="form-control" value="Tênis Skate">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao3-preco">Preço</label>
+                                <input type="text" id="colecao3-preco" class="form-control" value="R$ 349,90">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao3-link">Link do Produto</label>
+                                <input type="text" id="colecao3-link" class="form-control" value="/produto22">
+                            </div>
+                            <div class="form-group">
+                                <label for="colecao3-imagem">Alterar Imagem</label>
+                                <input type="file" id="colecao3-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="margin-top: 1.5rem;">
+                    <i class="fas fa-plus"></i> Adicionar à Coleção
+                </button>
+            </section>
+
+            <!-- Seção de Novidades -->
+            <section id="novidades" class="admin-section">
+                <h2><i class="fas fa-newspaper"></i> Gerenciamento de Novidades</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            Postagem 1
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.pinimg.com/736x/8e/cf/2d/8ecf2d139e5a08d19ea8a4767b23c165.jpg" alt="Postagem 1" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="novidade1-data">Data</label>
+                                <input type="text" id="novidade1-data" class="form-control" value="15 MARÇO 2023">
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade1-titulo">Título</label>
+                                <input type="text" id="novidade1-titulo" class="form-control" value="Conheça nossa nova coleção Outono/Inverno">
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade1-descricao">Descrição</label>
+                                <textarea id="novidade1-descricao" class="form-control" rows="3">Descubra as peças exclusivas que preparamos para a estação mais fria do ano, com materiais premium e designs inovadores.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade1-imagem">Alterar Imagem</label>
+                                <input type="file" id="novidade1-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Postagem 2
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="https://i.pinimg.com/736x/74/e9/7c/74e97c55ce3a690b335c220f28f751b9.jpg" alt="Postagem 2" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="novidade2-data">Data</label>
+                                <input type="text" id="novidade2-data" class="form-control" value="28 FEVEREIRO 2023">
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade2-titulo">Título</label>
+                                <input type="text" id="novidade2-titulo" class="form-control" value="Colaboração exclusiva com artista urbano">
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade2-descricao">Descrição</label>
+                                <textarea id="novidade2-descricao" class="form-control" rows="3">Nossa parceria com o renomado artista @streetartguy resulta em peças únicas com estampas limitadas.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade2-imagem">Alterar Imagem</label>
+                                <input type="file" id="novidade2-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Postagem 3
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <img src="img/loja.png" alt="Postagem 3" class="card-img">
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="novidade3-data">Data</label>
+                                <input type="text" id="novidade3-data" class="form-control" value="10 FEVEREIRO 2023">
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade3-titulo">Título</label>
+                                <input type="text" id="novidade3-titulo" class="form-control" value="Evento VIP de lançamento na galeria urbana">
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade3-descricao">Descrição</label>
+                                <textarea id="novidade3-descricao" class="form-control" rows="3">Confira como foi o nosso evento exclusivo para clientes selecionados, com desfile e drinks especiais.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="novidade3-imagem">Alterar Imagem</label>
+                                <input type="file" id="novidade3-imagem" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="margin-top: 1.5rem;">
+                    <i class="fas fa-plus"></i> Adicionar Nova Postagem
+                </button>
+            </section>
+
+            <!-- Seção de Acessórios -->
+            <section id="acessorios" class="admin-section">
+                <h2><i class="fas fa-ring"></i> Gerenciamento de Acessórios</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="acessorio-categoria">Categoria</label>
+                        <select id="acessorio-categoria" class="form-control">
+                            <option value="todos">Todos</option>
+                            <option value="chaveiros">Chaveiros</option>
+                            <option value="pins">Pins</option>
+                            <option value="adesivos">Adesivos</option>
+                            <option value="patches">Patches</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="acessorio-busca">Buscar Acessório</label>
+                        <input type="text" id="acessorio-busca" class="form-control" placeholder="Digite o nome do acessório...">
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagem</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Tag</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A001</td>
+                            <td><img src="img/acessorios/chaveiro1.jpg" alt="Acessório" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>Logo Metálico</td>
+                            <td>Chaveiro</td>
+                            <td>R$ 29,90</td>
+                            <td>42</td>
+                            <td>Novo</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A002</td>
+                            <td><img src="img/acessorios/pin1.jpg" alt="Acessório" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>Edição Limitada</td>
+                            <td>Pin</td>
+                            <td>R$ 24,90</td>
+                            <td>15</td>
+                            <td>-</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A003</td>
+                            <td><img src="img/acessorios/adesivo1.jpg" alt="Acessório" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                            <td>Pacote Variado</td>
+                            <td>Adesivos</td>
+                            <td>R$ 19,90</td>
+                            <td>28</td>
+                            <td>Promoção</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="btn btn-primary" style="margin-top: 1rem;">
+                    <i class="fas fa-plus"></i> Adicionar Novo Acessório
+                </button>
+            </section>
+
+            <!-- Seção de Cupons -->
+            <section id="cupons" class="admin-section">
+                <h2><i class="fas fa-tag"></i> Gerenciamento de Cupons</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cupom-status">Status</label>
+                        <select id="cupom-status" class="form-control">
+                            <option value="todos">Todos</option>
+                            <option value="ativos">Ativos</option>
+                            <option value="expirados">Expirados</option>
+                            <option value="futuros">Futuros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cupom-busca">Buscar Cupom</label>
+                        <input type="text" id="cupom-busca" class="form-control" placeholder="Digite o código do cupom...">
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Desconto</th>
+                            <th>Tipo</th>
+                            <th>Validade</th>
+                            <th>Usos</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BLACKFRIDAY23</td>
+                            <td>20%</td>
+                            <td>Porcentagem</td>
+                            <td>30/11/2023</td>
+                            <td>Ilimitado</td>
+                            <td><span class="status-badge status-pending">Futuro</span></td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>VERAO10</td>
+                            <td>R$ 10,00</td>
+                            <td>Valor Fixo</td>
+                            <td>15/03/2023</td>
+                            <td>43/100</td>
+                            <td><span class="status-badge status-completed">Ativo</span></td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PRIMEIRACOMPRA</td>
+                            <td>15%</td>
+                            <td>Porcentagem</td>
+                            <td>31/12/2023</td>
+                            <td>1 por cliente</td>
+                            <td><span class="status-badge status-completed">Ativo</span></td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PASCOA2023</td>
+                            <td>R$ 25,00</td>
+                            <td>Valor Fixo</td>
+                            <td>15/04/2023</td>
+                            <td>0/50</td>
+                            <td><span class="status-badge status-canceled">Expirado</span></td>
+                            <td>
+                                <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button class="btn btn-primary" style="margin-top: 1rem;">
+                    <i class="fas fa-plus"></i> Criar Novo Cupom
+                </button>
+                
+                <div class="form-row" style="margin-top: 2rem;">
+                    <div class="form-group">
+                        <label for="cupom-codigo">Código do Cupom</label>
+                        <input type="text" id="cupom-codigo" class="form-control" placeholder="Ex: VERÃO10">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cupom-tipo">Tipo de Desconto</label>
+                        <select id="cupom-tipo" class="form-control">
+                            <option value="porcentagem">Porcentagem (%)</option>
+                            <option value="valor">Valor Fixo (R$)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cupom-valor">Valor do Desconto</label>
+                        <input type="text" id="cupom-valor" class="form-control" placeholder="Ex: 10 ou 10%">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cupom-data-inicio">Data de Início</label>
+                        <input type="date" id="cupom-data-inicio" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cupom-data-fim">Data de Término</label>
+                        <input type="date" id="cupom-data-fim" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cupom-usos">Limite de Usos</label>
+                        <input type="number" id="cupom-usos" class="form-control" placeholder="Deixe em branco para ilimitado">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cupom-produtos">Aplicável a</label>
+                    <select id="cupom-produtos" class="form-control">
+                        <option value="todos">Todos os produtos</option>
+                        <option value="categoria">Categoria específica</option>
+                        <option value="produtos">Produtos específicos</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-success" style="margin-top: 1rem;">
+                    <i class="fas fa-save"></i> Salvar Cupom
+                </button>
+            </section>
+
+            <!-- Seção de Configurações -->
+            <section id="configuracoes" class="admin-section">
+                <h2><i class="fas fa-cog"></i> Configurações Gerais</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="config-nome-loja">Nome da Loja</label>
+                        <input type="text" id="config-nome-loja" class="form-control" value="Manifesto">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="config-email-contato">E-mail de Contato</label>
+                        <input type="email" id="config-email-contato" class="form-control" value="contato@manifesto.com.br">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="config-telefone">Telefone</label>
+                        <input type="text" id="config-telefone" class="form-control" value="(11) 99999-9999">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="config-whatsapp">WhatsApp</label>
+                        <input type="text" id="config-whatsapp" class="form-control" value="(11) 99999-9999">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="config-endereco">Endereço</label>
+                    <textarea id="config-endereco" class="form-control" rows="3">Rua Exemplo, 123 - Centro, São Paulo - SP, 01000-000</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="config-sobre">Sobre a Loja</label>
+                    <textarea id="config-sobre" class="form-control" rows="5">A Manifesto é uma marca de roupas e acessórios que busca expressar a identidade urbana através de designs exclusivos e materiais de alta qualidade.</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="config-logo">Logo da Loja</label>
+                    <input type="file" id="config-logo" class="form-control">
+                    <small>Atual: <a href="img/logo.png" target="_blank">logo.png</a></small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="config-icone">Ícone (Favicon)</label>
+                    <input type="file" id="config-icone" class="form-control">
+                    <small>Atual: <a href="img/icone.png" target="_blank">icone.png</a></small>
+                </div>
+                
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i> Salvar Configurações
+                </button>
+            </section>
+        </main>
+    </div>
+
+      <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-col">
+        <h4>Loja</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="roupas.html">Roupas</a></li>
+          <li><a href="novidades.html">Novidades</a></li>
+          <li><a href="acessorios.html">Acessórios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda e Suporte</h4>
+        <ul>
+          <li><a href="pagamento.html">Formas de Pagamento</a></li>
+          <li><a href="entrega.html">Formas de Entrega</a></li>
+          <li><a href="pedidos.html">Meus Pedidos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Siga nossas redes</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Créditos -->
+  <div class="footer-creditos">
+    <p>
+      <a href="https://www.exemplo.com/beatriz-perfil" target="_blank">Beatriz</a> |
+      <a href="https://www.behance.net/lucsvaa" target="_blank">Lucas</a> |
+      <a href="https://www.exemplo.com/ryan-perfil" target="_blank">Ryan</a>
+    </p>
+  </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

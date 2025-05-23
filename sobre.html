@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loja Streetwear</title>
+  <title>Sobre Nós</title>
   <link rel="stylesheet" href="css/style.css" />
+    <!-- Estilo da pagina sobre nos -->
+  <link rel="stylesheet" href="css/sobre.css">
 
   <!-- Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,119 +15,6 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* Estilos específicos para a página Sobre Nós */
-        .sobre-header {
-            padding: 4rem 0;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fachada-loja.jpg') center/cover;
-            color: white;
-        }
-        
-        .sobre-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        
-        .sobre-header p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .visual-identity {
-            padding: 4rem 0;
-            background-color: var(--darker-bg);
-        }
-        
-        .identity-row {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .identity-item {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            transition: transform var(--transition-speed) ease;
-            flex: 1;
-            max-width: 400px;
-        }
-        
-        .identity-item-wide {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            transition: transform var(--transition-speed) ease;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .identity-item:hover, .identity-item-wide:hover {
-            transform: translateY(-10px);
-        }
-        
-        .identity-item img {
-            max-width: 100%;
-            height: auto;
-            max-height: 200px;
-            object-fit: contain;
-            margin-bottom: 1.5rem;
-        }
-        
-        .identity-item-wide img {
-            max-width: 100%;
-            height: auto;
-            max-height: 300px;
-            object-fit: contain;
-            margin-bottom: 1.5rem;
-        }
-        
-        .identity-item h3, .identity-item-wide h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .nossa-historia {
-            padding: 4rem 0;
-            background-color: var(--dark-bg);
-        }
-        
-        .nossa-historia .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .nossa-historia img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        @media (max-width: 768px) {
-            .identity-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .identity-item, .identity-item-wide {
-                max-width: 100%;
-                width: 100%;
-            }
-            
-            .nossa-historia .container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 
     <!-- Icone -->
     <link rel="icon" href="img/icone.png" type="image/png">
@@ -257,20 +146,6 @@ Manifesto vem de “manifestar” — nosso estilo, nossas ideias, nosso jeito d
   </div>
 
     <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
-    <script>
-        // Seu JavaScript existente para o menu hamburguer
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navCenter = document.querySelector('.nav-center');
-        const navRight = document.querySelector('.nav-right');
-        const body = document.body;
-
-        hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('active');
-            navCenter.classList.toggle('open');
-            navRight.classList.toggle('open');
-            body.classList.toggle('menu-open');
-        });
-    </script>
+    <script src="js/sobre.js"></script>
 </body>
 </html>
